@@ -50,7 +50,7 @@
 document.querySelectorAll('[data-address]').forEach(button=>button.addEventListener('click',async()=>{const address=button.dataset.address;try{await navigator.clipboard.writeText(address);document.getElementById('toast').textContent='Korean name & address copied';setTimeout(()=>document.getElementById('toast').textContent='',2200)}catch{window.prompt('Copy this Korean name and address:',address)}}));
 </script><script>
 (function(){
-var ENDPOINT='';/* 기록 수신 주소(구글 폼·앱스 스크립트)는 연결 후 입력 */
+var ENDPOINT='https://script.google.com/macros/s/AKfycbwWBdHbuPuBgmBNq9n6I1smj4E2F-2JKx8Lu19YLOYl8ncouF1_D0PPRzReDyIos-Mt/exec';/* 기록 수신 주소(구글 폼·앱스 스크립트)는 연결 후 입력 */
 var q=new URLSearchParams(location.search),tag={src:q.get('src')||'',c:q.get('c')||''};
 var sid=Math.random().toString(36).slice(2,10);try{sid=localStorage.getItem('syg_sid')||sid;localStorage.setItem('syg_sid',sid)}catch(x){}
 function log(ev,place,detail){var r={t:new Date().toISOString(),sid:sid,src:tag.src,c:tag.c,ev:ev,place:place||'',detail:detail||'',lang:navigator.language};
