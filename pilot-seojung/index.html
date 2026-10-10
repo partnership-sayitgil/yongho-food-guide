@@ -6,7 +6,7 @@
 a{color:inherit}button{font:inherit;cursor:pointer}.wrap{max-width:720px;margin:auto;padding:0 16px}
 .hero{padding:22px 0 8px}.brand{font-size:11px;letter-spacing:2px;font-weight:700;color:var(--muted)}
 .hero h1{font-family:Paperlogy,"Noto Sans KR",sans-serif;font-weight:700;color:var(--ink);letter-spacing:-.5px;font-size:27px;line-height:1.15;margin:10px 0 6px}.hero h1 em{color:var(--accent);font-style:normal}
-.hero p{margin:0;color:var(--muted);font-size:15px}.now{font-size:12px;color:var(--muted);margin-top:10px}
+.hero p{margin:0;color:var(--muted);font-size:15px}.hero .now{display:flex;align-items:center;gap:10px;width:fit-content;max-width:100%;font-size:15px;font-weight:700;color:var(--ink);background:#ebeee6;border:1px solid #cbd5cc;border-left:4px solid var(--accent);border-radius:10px;padding:10px 14px;margin-top:16px}.now::before{content:"◷";font-size:24px;line-height:1}
 .tabs{position:sticky;top:0;z-index:5;background:var(--paper);display:flex;gap:8px;padding:12px 0;border-bottom:1px solid var(--line)}
 .tab{flex:1;border:1px solid var(--line);background:#fff;border-radius:14px;padding:10px 6px;font-size:13px;font-weight:700;color:var(--ink)}
 .tab span{display:block;font-size:20px}.tab.on{background:var(--ink);color:#fff;border-color:var(--ink)}.tab{font-family:Paperlogy,"Noto Sans KR",sans-serif}
@@ -94,7 +94,7 @@ function status(pid){var k=kst(),s=D.sched[pid]||{},t=s[k.d]||[],y=s[(k.d+6)%7]|
 var eat=document.getElementById('eat');
 Object.keys(D.sched).forEach(function(pid){var st=status(pid),el=document.querySelector('[data-status="'+pid+'"]');el.textContent=st.txt;el.className='status '+(st.open?'open':'closed');document.getElementById(pid).dataset.open=st.open});
 [].slice.call(eat.querySelectorAll('.card')).sort(function(a,b){return b.dataset.open-a.dataset.open}).forEach(function(c){eat.appendChild(c)});
-var k=kst();document.getElementById('now').textContent='Busan time now: '+['Mon','Tue','Wed','Thu','Fri','Sat','Sun'][k.d]+' '+hm(k.m);
+function updateClock(){var k=kst();document.getElementById('now').textContent='Busan time now · '+['Mon','Tue','Wed','Thu','Fri','Sat','Sun'][k.d]+' '+hm(k.m)+' (KST)'}updateClock();setInterval(updateClock,30000);
 /* 탭 */
 document.querySelectorAll('.tab').forEach(function(b){b.addEventListener('click',function(){document.querySelectorAll('.tab').forEach(function(x){x.classList.toggle('on',x===b)});document.querySelectorAll('section').forEach(function(s){s.classList.toggle('on',s.id===b.dataset.tab)});scrollTo(0,0);log('link','','tab:'+b.dataset.tab)})});
 /* 하단 시트 */
